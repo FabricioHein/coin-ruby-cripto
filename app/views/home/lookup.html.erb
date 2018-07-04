@@ -1,0 +1,17 @@
+
+<h3> Cripto Coin Real Time </h3>
+
+
+<%= form_tag home_lookup_path, :method => 'POST' do %> 
+<%= text_field_tag 'sym', nil, placeholder: 'Ender Crypto Symbol', size: 50 %>
+<%=submit_tag 'Lookup Stock Quote' %>
+<% end %>
+
+<% if @symbol %>
+    <% for x in @lookup_coins %>
+      <% if @symbol == x["symbol"] %>
+        <%= x["rank"] %> - <%= x["name"] %>: $ <%= x["price_usd"] %><br/><br/>
+          <% end %>
+    <% end %>
+<% end %>
+
