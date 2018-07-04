@@ -3,9 +3,17 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+# Data from API https://coinmarketcap.com 
+
+
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.1.2p95
+
+* Rails 4.1 
+* Bootstrap 4.1 
+
+
 
 * System dependencies
 
