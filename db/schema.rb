@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180704031426) do
+ActiveRecord::Schema.define(version: 20180705013012) do
+
+  create_table "cryptos", force: true do |t|
+    t.string   "symbol"
+    t.integer  "user_id"
+    t.decimal  "cost_per"
+    t.decimal  "amount_owned"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cryptos", ["user_id"], name: "index_cryptos_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
