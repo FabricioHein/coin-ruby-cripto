@@ -1,9 +1,44 @@
-<% @coins %>
+<div class="container mt-3">
+  <h2>Busque a Moeda que Deseja</h2>
+  <p>Encontre a moeda por:</p>  
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+  <table class="table table-bordered">
+        
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Coin</th>
+        <th>Preço</th>
+      </tr>
+    </thead>
+    
+<tbody id="myTable">
+      <% @coins %>
 <% for x in @coins  %>
     <% for coin in @my_coins  %>
-      <% if coin == x["symbol"] %>
-        <%= x["rank"] %> - <%= x["name"] %>: $ <%= x["price_usd"] %><br/><br/>
-          <% end %>
+      <% if coin == x["symbol"] %> 
+      <tr>
+        <td> <%= x["rank"] %></td>
+        <td><%= x["name"] %></td>
+        <td>$ <%= x["price_usd"] %></td>
+      </tr>
+         <% end %>
       <% end %>
 <% end %>
+</tbody>
+  </table>
+  
+  <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
+</div>
 
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
