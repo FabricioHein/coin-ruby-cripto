@@ -3,12 +3,11 @@ class HomeController < ApplicationController
     require 'net/http'
     require 'json'
     
-    @url = 'https://api.coinmarketcap.com/v1/ticker/'
+    @url = 'https://api.coinmarketcap.com/v1/ticker/?limit=1000'
     @uri = URI(@url)
     @resonse = Net::HTTP.get(@uri)
     @coins = JSON.parse(@resonse)
-    @my_coins = ["BTC", "XRP", "ADA", "XLM", "STEEM",]
-    
+        
     end
   
   def lookup

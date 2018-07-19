@@ -3,27 +3,46 @@
   <p>Encontre a moeda por:</p>  
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
+
   <table class="table table-bordered">
         
     <thead>
       <tr>
         <th>Rank</th>
-        <th>Coin</th>
-        <th>Preço</th>
+        <th>Name</th>
+        <th>Total Supply</th>
+        <th>Price USD</th>
+         <th>Price btc</th>
+         <th>Market Cap</th>
+        <th>24h volume</th>      
+        <th>Max Supply</th>
+       
+        <th>1h</th>
+        <th>24h</th>
+        <th>7d</th>
+       
       </tr>
     </thead>
-    
-<tbody id="myTable">
-      <% @coins %>
+   
+<tbody  id="myTable" >
+      
 <% for x in @coins  %>
-    <% for coin in @my_coins  %>
-      <% if coin == x["symbol"] %> 
+
+      <% if coin = x["symbol"] %> 
       <tr>
         <td> <%= x["rank"] %></td>
         <td><%= x["name"] %></td>
+        <td> <%= x["total_supply"] %></td>
         <td>$ <%= x["price_usd"] %></td>
-      </tr>
-         <% end %>
+        <td> <%= x["price_btc"] %></td>
+        <td>$ <%= x["market_cap_usd"] %></td>
+        <td>$ <%= x["24h_volume_usd"] %></td>
+        <td> <%= x["max_supply"] %></td>
+        <td> <%= x["percent_change_1h"] %></td>
+        <td> <%= x["percent_change_24h"] %></td>
+        <td> <%= x["percent_change_7d"] %></td>
+         </tr> 
+        
       <% end %>
 <% end %>
 </tbody>
@@ -32,6 +51,8 @@
   <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
 </div>
 
+      </nav>
+</div>
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
@@ -41,4 +62,20 @@ $(document).ready(function(){
     });
   });
 });
+</script>
+
+
+
+
+<script type="text/javascript">
+    $(function () {
+        var obj = $('#pagination').twbsPagination({
+            totalPages: 35,
+            visiblePages: 10,
+            onPageClick: function (event, page) {
+                console.info(page);
+            }
+        });
+        console.info(obj.data());
+    });
 </script>
