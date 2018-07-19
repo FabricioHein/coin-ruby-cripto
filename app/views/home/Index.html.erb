@@ -4,7 +4,7 @@
   <input class="form-control" id="myInput" type="text" placeholder="Search..">
   <br>
 
-  <table class="table table-bordered">
+  <table class="table-wrapper">
         
     <thead>
       <tr>
@@ -16,11 +16,9 @@
          <th>Market Cap</th>
         <th>24h volume</th>      
         <th>Max Supply</th>
-       
         <th>1h</th>
         <th>24h</th>
-        <th>7d</th>
-       
+        <th>7d</th>       
       </tr>
     </thead>
    
@@ -51,8 +49,7 @@
   <p>Note that we start the search in tbody, to prevent filtering the table headers.</p>
 </div>
 
-      </nav>
-</div>
+  
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
